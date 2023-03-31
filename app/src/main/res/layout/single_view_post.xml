@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="visible">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileImagePost"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/profileUsernamePost"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="64dp"
+                android:text="TextView"
+                android:textColor="@color/tool_bar_comment"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/profileImagePost"
+                app:layout_constraintTop_toTopOf="@+id/profileImagePost" />
+
+            <TextView
+                android:id="@+id/timeAgo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="0hrs ago"
+                app:layout_constraintEnd_toEndOf="@+id/profileUsernamePost"
+                app:layout_constraintStart_toStartOf="@+id/profileUsernamePost"
+                app:layout_constraintTop_toBottomOf="@+id/profileUsernamePost" />
+
+            <TextView
+                android:id="@+id/postDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Post Description"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/timeAgo"
+                app:layout_constraintHorizontal_bias="0.507"
+                app:layout_constraintStart_toStartOf="@+id/timeAgo"
+                app:layout_constraintTop_toBottomOf="@+id/timeAgo" />
+
+            <ImageView
+                android:id="@+id/viewImagePost"
+                android:layout_width="412dp"
+                android:layout_height="266dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/postDesc"
+                app:srcCompat="@drawable/picture" />
+
+            <ImageView
+                android:id="@+id/likeImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/likesCounter"
+                app:layout_constraintStart_toStartOf="@+id/viewImagePost"
+                app:layout_constraintTop_toBottomOf="@+id/viewImagePost"
+                app:srcCompat="@drawable/ic_like" />
+
+            <TextView
+                android:id="@+id/likesCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="0"
+                app:layout_constraintBottom_toBottomOf="@+id/likeImage"
+                app:layout_constraintStart_toEndOf="@+id/likeImage"
+                app:layout_constraintTop_toTopOf="@+id/likeImage" />
+
+            <ImageView
+                android:id="@+id/commentImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewImagePost"
+                app:srcCompat="@drawable/ic_comment" />
+
+            <TextView
+                android:id="@+id/commentsCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="0"
+                app:layout_constraintBottom_toBottomOf="@+id/commentImage"
+                app:layout_constraintEnd_toStartOf="@+id/commentImage"
+                app:layout_constraintTop_toTopOf="@+id/commentImage" />
+
+
+
+
+            <ImageButton
+                android:id="@+id/moreBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/timeAgo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/profileUsernamePost"
+                app:layout_constraintTop_toTopOf="@+id/profileUsernamePost"
+                android:background="@null"
+                android:src="@drawable/ic_more_black"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
