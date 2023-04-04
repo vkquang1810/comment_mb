@@ -134,7 +134,7 @@ public class CommentPost extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull MyviewHolder holder, int position, @NonNull posts model) {
-                String postID = model.getPostID();
+                String postId = model.getPostID();
 
 
 
@@ -149,7 +149,7 @@ public class CommentPost extends AppCompatActivity {
                 holder.userEmail.setText(model.getUserEmail());
                 Picasso.get().load(model.getPostImageUrl()).into(holder.postImage);
                 holder.countLikes(postKey,mUser.getUid(),likeRef);
-                holder.countComments(postID, mUser.getUid(), FirebaseDatabase.getInstance().getReference().child("Comments"));
+                holder.countComments(postKey, mUser.getUid(), FirebaseDatabase.getInstance().getReference("Post").child(postId).child("Comments"));
 
 
 
@@ -193,7 +193,7 @@ public class CommentPost extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(CommentPost.this, PostDetailActivity.class);
-                        intent.putExtra("postID", postID);
+                        intent.putExtra("postID", postId);
                         startActivity(intent);
 
                     }
@@ -262,14 +262,15 @@ public class CommentPost extends AppCompatActivity {
             String userEmail = mUser.getEmail();
 
             String timeStamp = String.valueOf(System.currentTimeMillis());
+            String postID = timeStamp;
 
             // Lưu ý nếu khi đã có user thì phảo theem dòng  .child(mUser.getUid() + strDate)
 
-            postImageRef.child(mUser.getUid() + strDate).putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            postImageRef.child(postID).putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                     if (task.isSuccessful()){
-                        postImageRef.child(mUser.getUid() + strDate).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        postImageRef.child(postID).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
 
@@ -283,7 +284,7 @@ public class CommentPost extends AppCompatActivity {
                                 hashMap.put("postID", timeStamp);
                                 //hash map user ID
                                 //hashMap.put("userName",usernameV);
-                                postRef.child(mUser.getUid() + strDate).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                                postRef.child(postID).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
                                     @Override
                                     public void onComplete(@NonNull Task task) {
                                         if (task.isSuccessful())
